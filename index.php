@@ -8,11 +8,7 @@
     <title>Hospital</title>
     <style>
         body {
-            background-image: url("./chair.png");
-            background-position: center center;
-            background-repeat: no-repeat;
-            background-size: cover;
-            min-height: 90vh;
+           background-color:#e0d3d3; ;
         }
 
         .menu {
@@ -67,11 +63,11 @@
         <div class="logo">
             <div>
                 <a href="">Getwell@Hospitals.com</a>
-                <a class="phonee"><i class="fas fa-phone-alt"></i>+8801771611622</a>
+                <a class="phonee"><i class="fas fa-phone-alt"></i>+8803832628982</a>
             </div>
             <div class="right">
-                <a href="">Sign in</a>
-                <a class="phonee" href="">Sign up</a>
+                <a href="login-action.php">Sign in</a>
+                <a class="phonee" href="registration-action.php">Sign up</a>
             </div>
         </div>
     </header>
