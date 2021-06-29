@@ -44,6 +44,8 @@
       $fname = "";
       $username = "";
       $password = "";
+      $permanent = "";
+      $tel = "";
       $verify_password = "";
       $regErr = "";
       $flag = false;
@@ -62,6 +64,12 @@
         else {
           $flag = true;
         }
+        if(!empty($_POST['permanent'])) {
+          $permanent = input($_POST['permanent']);
+        }
+        if(!empty($_POST['tel'])) {
+          $tel = input($_POST['tel']);
+        }
         if(!empty($_POST['password'])) {
           $password = input($_POST['password']);
         }
@@ -76,13 +84,13 @@
           $existing_data = read();
 
           if(empty($existing_data)) {
-            $objArr[] = array("firstname" => $fname, "username" => $username, "password" => $password);
+            $objArr[] = array("fullname" => $fname, "username" => $username,"Permanent Address"=>$permanent,"telephone"=>ucwords($tel), "password" => $password);
             $result = write(json_encode($objArr));
           }
           else {
             $existing_data_decode = json_decode($existing_data);
 
-            array_push($existing_data_decode, array("firstname" => $fname, "username" => $username, "password" => $password));
+            array_push($existing_data_decode, array("fullname" => $fname,"Permanent Address"=>$permanent,"telephone"=>$tel, "username" => $username, "password" => $password));
             write("");
             $result = write(json_encode($existing_data_decode));
           }
@@ -107,6 +115,12 @@
         <label for="username">Username<span class="required">*</span>: </label>
         <input type="text" name="username" value="<?php echo $username; ?>" />
         <br>
+        <label for="permanent">Permanent Address: </label>
+        <textarea name="permanent" rows="2" cols="30" value="<?php echo $permanent; ?>"></textarea>
+        <br/>
+        <label for="tel">Telephone: </label>
+        <input type="tel" name="tel" value="<?php echo $tel; ?>" />
+        <br/>
         <label for="password">Password<span class="required">*</span>: </label>
         <input type="password" name="password" value="<?php echo $password; ?>" />
         <br>

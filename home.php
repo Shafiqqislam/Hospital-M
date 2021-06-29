@@ -12,14 +12,21 @@
         margin-left: 973px;
         display: flex;
       }
-      
+      .user-info {
+    /* align-items: center; */
+    text-align: center;
+    border: 1px solid black;
+    width: 400px;
+    margin-left: 0 auto;
+    margin-left: 450px;
+}
     </style>
   </head>
   <body>
 <h1 style="background-color: burlywood;text-align:center;">Hospital Management System</h1>
    <div class="welcome-page">
      <div>
-     <a style="text-decoration: none;" href="index.php"><h2>Home</h2></a>
+     <a  style="text-decoration: none;" href="index.php"><h2>Home</h2></a>
      </div>
    <div class="right">
   <div>
@@ -33,6 +40,7 @@
     ?>
   </div>
   <div>
+    
     <a  href="logout-action.php"><button style="margin-top: 23px;margin-left: 29px;background-color: burlywood;">Logout</button></a>
   </div>
    </div>
@@ -41,7 +49,30 @@
    <div>
    <a style="text-decoration: none;" href="home.php">Home</a>|<a style="text-decoration: none;" href="profile.php">View Profile</a>|<a style="text-decoration: none;" href="security_system.php">Change password</a>|<a style="text-decoration: none;" href="add-medicine.php">Add Medicine</a>|<a style="text-decoration: none;" href="add-cart.php">Add To Cart</a>
    </div>
-  <?php
+   <div>
+   <fieldset>
+   <legend>Home</legend>
+   <?php
+    $username = "";
+      if (isset($_COOKIE["username"])) {
+        $username = $_COOKIE["username"];
+      }
+      $username = strtoupper($username);
+      echo "<h2>Welcome to Oreo Hospital</h2>";
+      echo "<h3>User Information</h3>";
+      $user = json_decode($_COOKIE["user"]);
+
+      foreach($user as $key => $value)
+      {
+        if ($key != "username" and $key != "password") {
+          $key = ucwords($key);
+          echo "<p>$key: $value</p>";
+        }
+      }
+    ?>
+   </fieldset>
+   </div>
+   <?php
     include 'footer.php';
     ?>
   </body>

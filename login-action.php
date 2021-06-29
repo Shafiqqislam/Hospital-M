@@ -60,6 +60,14 @@
         if ($username === "" or $password === "") {
           $error = "username or password cannot be empty";
         }
+        if(empty($username)) {
+          $error = "Field can not be empty";
+          $flag = true;
+          }
+          if(empty($password)) {
+            $error = "Field can not be empty";
+            $flag = true;
+            }
         else {
           $readData = read();
           $userArr = json_decode($readData);
